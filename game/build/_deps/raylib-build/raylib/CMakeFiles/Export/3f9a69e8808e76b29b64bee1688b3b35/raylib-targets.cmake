@@ -7,7 +7,7 @@ if(CMAKE_VERSION VERSION_LESS "2.8.12")
    message(FATAL_ERROR "CMake >= 2.8.12 required")
 endif()
 cmake_policy(PUSH)
-cmake_policy(VERSION 2.8.12...4.1)
+cmake_policy(VERSION 2.8.12...4.2)
 #----------------------------------------------------------------
 # Generated CMake target import file.
 #----------------------------------------------------------------
@@ -61,7 +61,7 @@ add_library(raylib STATIC IMPORTED)
 set_target_properties(raylib PROPERTIES
   INTERFACE_COMPILE_DEFINITIONS "PLATFORM_DESKTOP;GRAPHICS_API_OPENGL_33"
   INTERFACE_INCLUDE_DIRECTORIES "${_IMPORT_PREFIX}/include"
-  INTERFACE_LINK_LIBRARIES "\$<LINK_ONLY:>;\$<LINK_ONLY:opengl32>;\$<LINK_ONLY:glu32>;\$<LINK_ONLY:winmm>"
+  INTERFACE_LINK_LIBRARIES "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework;\$<LINK_ONLY:>;\$<LINK_ONLY:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/OpenGL.framework>;\$<LINK_ONLY:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/Cocoa.framework>;\$<LINK_ONLY:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/IOKit.framework>;\$<LINK_ONLY:/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks/QuartzCore.framework>"
 )
 
 # Load information for each installed configuration.

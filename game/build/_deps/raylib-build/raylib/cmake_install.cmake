@@ -1,8 +1,8 @@
-# Install script for directory: C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-src/src
+# Install script for directory: /Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "C:/Program Files (x86)/project")
+  set(CMAKE_INSTALL_PREFIX "/usr/local")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,39 +34,43 @@ endif()
 
 # Set path to fallback-tool for dependency-resolution.
 if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "C:/msys64/ucrt64/bin/objdump.exe")
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for the subdirectory.
-  include("C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/external/glfw/cmake_install.cmake")
+  include("/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/external/glfw/cmake_install.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/libraylib.a")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE STATIC_LIBRARY FILES "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/libraylib.a")
+  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraylib.a" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraylib.a")
+    execute_process(COMMAND "/usr/bin/ranlib" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libraylib.a")
+  endif()
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE FILE FILES
-    "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-src/src/raylib.h"
-    "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-src/src/rcamera.h"
-    "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-src/src/rlgl.h"
-    "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-src/src/raymath.h"
+    "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src/src/raylib.h"
+    "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src/src/rcamera.h"
+    "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src/src/rlgl.h"
+    "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src/src/raymath.h"
     )
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/raylib.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/raylib.pc")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/raylib-config-version.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/raylib-config-version.cmake")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES
-    "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/raylib-config-version.cmake"
-    "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/raylib-config.cmake"
+    "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/raylib-config-version.cmake"
+    "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/raylib-config.cmake"
     )
 endif()
 
@@ -74,7 +78,7 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib/raylib-targets.cmake")
     file(DIFFERENT _cmake_export_file_changed FILES
          "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib/raylib-targets.cmake"
-         "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/CMakeFiles/Export/3f9a69e8808e76b29b64bee1688b3b35/raylib-targets.cmake")
+         "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/CMakeFiles/Export/3f9a69e8808e76b29b64bee1688b3b35/raylib-targets.cmake")
     if(_cmake_export_file_changed)
       file(GLOB _cmake_old_config_files "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib/raylib-targets-*.cmake")
       if(_cmake_old_config_files)
@@ -87,15 +91,15 @@ if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT
     endif()
     unset(_cmake_export_file_changed)
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/CMakeFiles/Export/3f9a69e8808e76b29b64bee1688b3b35/raylib-targets.cmake")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/CMakeFiles/Export/3f9a69e8808e76b29b64bee1688b3b35/raylib-targets.cmake")
   if(CMAKE_INSTALL_CONFIG_NAME MATCHES "^()$")
-    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/CMakeFiles/Export/3f9a69e8808e76b29b64bee1688b3b35/raylib-targets-noconfig.cmake")
+    file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/cmake/raylib" TYPE FILE FILES "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/CMakeFiles/Export/3f9a69e8808e76b29b64bee1688b3b35/raylib-targets-noconfig.cmake")
   endif()
 endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build/raylib/install_local_manifest.txt"
+  file(WRITE "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build/raylib/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

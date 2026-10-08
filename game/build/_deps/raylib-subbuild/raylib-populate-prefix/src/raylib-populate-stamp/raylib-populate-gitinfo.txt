@@ -3,9 +3,9 @@
 # No other meaning or use of this file is supported.
 
 method=git
-command=C:/msys64/ucrt64/bin/cmake.exe;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/tmp/raylib-populate-gitclone.cmake
-source_dir=C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-src
-work_dir=C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps
+command=/opt/homebrew/bin/cmake;-DCMAKE_MESSAGE_LOG_LEVEL=VERBOSE;-P;/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/tmp/raylib-populate-gitclone.cmake
+source_dir=/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src
+work_dir=/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps
 repository=https://github.com/raysan5/raylib
 remote=origin
 init_submodules=TRUE

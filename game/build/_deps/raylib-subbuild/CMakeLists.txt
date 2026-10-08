@@ -1,7 +1,7 @@
 # Distributed under the OSI-approved BSD 3-Clause License.  See accompanying
 # file LICENSE.rst or https://cmake.org/licensing for details.
 
-cmake_minimum_required(VERSION 4.3.3)
+cmake_minimum_required(VERSION 4.4.2)
 
 # Reject any attempt to use a toolchain file. We must not use one because
 # we could be downloading it here. If the CMAKE_TOOLCHAIN_FILE environment
@@ -18,18 +18,18 @@ project(raylib-populate NONE)
 
 # Pass through things we've already detected in the main project to avoid
 # paying the cost of redetecting them again in ExternalProject_Add()
-set(GIT_EXECUTABLE [==[C:/Program Files/Git/cmd/git.exe]==])
-set(Git_VERSION [==[2.55.0.windows.3]==])
+set(GIT_EXECUTABLE [==[/usr/bin/git]==])
+set(Git_VERSION [==[2.54.0 (Apple Git-157)]==])
 set_property(GLOBAL PROPERTY _CMAKE_FindGit_GIT_EXECUTABLE_VERSION
-  [==[C:/Program Files/Git/cmd/git.exe;2.55.0.windows.3]==]
+  [==[/usr/bin/git;2.54.0 (Apple Git-157)]==]
 )
 
 
 include(ExternalProject)
 ExternalProject_Add(raylib-populate
                      "UPDATE_DISCONNECTED" "False" "GIT_REPOSITORY" "https://github.com/raysan5/raylib" "EXTERNALPROJECT_INTERNAL_ARGUMENT_SEPARATOR" "GIT_TAG" "master"
-                    SOURCE_DIR          "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-src"
-                    BINARY_DIR          "C:/Users/kyong/Documents/c/cpuzzle/game/build/_deps/raylib-build"
+                    SOURCE_DIR          "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src"
+                    BINARY_DIR          "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build"
                     CONFIGURE_COMMAND   ""
                     BUILD_COMMAND       ""
                     INSTALL_COMMAND     ""

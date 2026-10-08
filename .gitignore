@@ -71,6 +71,7 @@ dkms.conf
 
 # Executables
 release/
+build/
 
 # Etc
 .DS_Store
