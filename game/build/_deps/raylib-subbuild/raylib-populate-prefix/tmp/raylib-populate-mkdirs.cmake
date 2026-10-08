@@ -6,22 +6,22 @@ cmake_minimum_required(VERSION ${CMAKE_VERSION}) # this file comes with cmake
 # If CMAKE_DISABLE_SOURCE_CHANGES is set to true and the source directory is an
 # existing directory in our source tree, calling file(MAKE_DIRECTORY) on it
 # would cause a fatal error, even though it would be a no-op.
-if(NOT EXISTS "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src")
-  file(MAKE_DIRECTORY "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src")
+if(NOT EXISTS "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src")
+  file(MAKE_DIRECTORY "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-src")
 endif()
 file(MAKE_DIRECTORY
-  "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build"
-  "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix"
-  "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/tmp"
-  "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp"
-  "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src"
-  "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp"
+  "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-build"
+  "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix"
+  "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/tmp"
+  "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp"
+  "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src"
+  "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp"
 )
 
 set(configSubDirs )
 foreach(subDir IN LISTS configSubDirs)
-    file(MAKE_DIRECTORY "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/${subDir}")
+    file(MAKE_DIRECTORY "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp/${subDir}")
 endforeach()
 if(cfgdir)
-  file(MAKE_DIRECTORY "/Users/pupungeggang/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp${cfgdir}") # cfgdir has leading slash
+  file(MAKE_DIRECTORY "C:/Users/kyong/Documents/c_cpp/C-Raylib-Puzzle/game/build/_deps/raylib-subbuild/raylib-populate-prefix/src/raylib-populate-stamp${cfgdir}") # cfgdir has leading slash
 endif()

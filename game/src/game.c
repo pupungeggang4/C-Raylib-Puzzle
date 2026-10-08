@@ -1,7 +1,13 @@
 #include "game.h"
 
 void gameInit(GameVar* gameVar) {
+    SetConfigFlags(FLAG_WINDOW_HIGHDPI);
     InitWindow(800, 600, "Puzzle Game");
+    Vector2 dpiScale = GetWindowScaleDPI();
+    int width = (int)(800 * dpiScale.x);
+    int height = (int)(600 * dpiScale.y);
+    SetWindowSize(width, height);
+    SetTargetFPS(60);
     gameVar->running = 1;
 }
 
