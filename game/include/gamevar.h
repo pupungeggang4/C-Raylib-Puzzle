@@ -6,6 +6,7 @@
 
 typedef struct GameVar {
     int running;
+    int width, height;
     Camera2D camera;
     Board board;
 } GameVar;

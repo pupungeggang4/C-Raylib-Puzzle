@@ -8,17 +8,25 @@ void gameInit(GameVar* gameVar) {
     InitWindow(800, 600, "Puzzle Game");
     #ifndef __APPLE__
     Vector2 dpiScale = GetWindowScaleDPI();
-    int width = (int)(800 * dpiScale.x);
-    int height = (int)(600 * dpiScale.y);
-    SetWindowSize(width, height);
+    gameVar->width = (int)(800 * dpiScale.x);
+    gameVar->height = (int)(600 * dpiScale.y);
+    SetWindowSize(gameVar->width, gameVar->height);
     #endif
     SetTargetFPS(60);
     #endif
-
+    SetExitKey(KEY_NULL);
+    
+    Camera2D tempCamera = {0};
+    gameVar->camera = tempCamera;
+    gameVar->camera.zoom = GetRenderWidth() / 800.0f;
     gameVar->running = 1;
 }
 
 void gameLoop(GameVar* gameVar) {
+    gameVar->camera.zoom = GetRenderWidth() / 800.0f;
+
+    gameInputHandle(gameVar);
+
     BeginDrawing();
     ClearBackground(RAYWHITE);
     EndDrawing();
@@ -33,4 +41,15 @@ void gameLoop(GameVar* gameVar) {
         gameVar->running = 0;
     }
     #endif
+}
+
+void gameInputHandle(GameVar* gameVar) {    
+    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+        #ifdef __EMSCRIPTEN__
+        Vector2 pos = GetScreenToWorld2D(GetMousePosition(), gameVar->camera);
+        #else
+        Vector2 pos = GetScreenToWorld2D(Vector2Scale(GetMousePosition(), GetWindowScaleDPI().x), gameVar->camera);
+        #endif
+        printf("(%.0f, %.0f)\n", pos.x, pos.y);
+    }
 }
