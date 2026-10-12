@@ -31,14 +31,18 @@ void gameLoop(GameVar* gameVar) {
     gameInputHandle(gameVar);
 
     if (gameVar->scene == TITLE) {
-        sceneTitleLoop(gameVar);
+        sceneTitleUpdate(gameVar);
     } else if (gameVar->scene == FIELD) {
-    
+        sceneFieldUpdate(gameVar);
     }
     
     BeginDrawing();
     ClearBackground(RAYWHITE);
-    
+    if (gameVar->scene == TITLE) {
+        sceneTitleRender(gameVar);
+    } else if (gameVar->scene == FIELD) {
+        sceneFieldRender(gameVar);
+    }
     EndDrawing();
 
     // Terminate part
@@ -54,12 +58,24 @@ void gameLoop(GameVar* gameVar) {
 }
 
 void gameInputHandle(GameVar* gameVar) {    
-    if (IsMouseButtonPressed(MOUSE_BUTTON_LEFT)) {
+    if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
         #ifdef __EMSCRIPTEN__
         Vector2 pos = GetScreenToWorld2D(GetMousePosition(), gameVar->camera);
         #else
         Vector2 pos = GetScreenToWorld2D(Vector2Scale(GetMousePosition(), GetWindowScaleDPI().x), gameVar->camera);
         #endif
         printf("(%.0f, %.0f)\n", pos.x, pos.y);
+
+        if (gameVar->scene == TITLE) {
+            sceneTitleMouseUp(gameVar, pos);
+        } else if (gameVar->scene == FIELD) {
+            sceneFieldMouseUp(gameVar, pos);
+        }
+    }
+
+    if (gameVar->scene == TITLE) {
+        sceneTitleKeyHandle(gameVar);
+    } else if (gameVar->scene == FIELD) {
+        sceneFieldKeyHandle(gameVar);
     }
 }

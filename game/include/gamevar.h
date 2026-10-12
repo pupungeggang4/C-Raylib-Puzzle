@@ -11,6 +11,9 @@ typedef struct GameVar {
 
     int scene;
     int state;
+    int menu;
+
+    int selectedTitle;
     Board board;
 } GameVar;
 
