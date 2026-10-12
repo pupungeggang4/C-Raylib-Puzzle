@@ -13,4 +13,7 @@
 #include <raylib.h>
 #include <raymath.h>
 
+enum Scene {TITLE, FIELD};
+enum State {NORMAL, MENU};
+
 #endif

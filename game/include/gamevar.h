@@ -8,6 +8,9 @@ typedef struct GameVar {
     int running;
     int width, height;
     Camera2D camera;
+
+    int scene;
+    int state;
     Board board;
 } GameVar;
 

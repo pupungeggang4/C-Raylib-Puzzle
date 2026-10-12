@@ -1,4 +1,5 @@
 #include "game.h"
+#include "scene.h"
 
 void gameInit(GameVar* gameVar) {
     #ifdef __EMSCRIPTEN__
@@ -20,6 +21,8 @@ void gameInit(GameVar* gameVar) {
     gameVar->camera = tempCamera;
     gameVar->camera.zoom = GetRenderWidth() / 800.0f;
     gameVar->running = 1;
+    gameVar->scene = TITLE;
+    gameVar->state = NORMAL;
 }
 
 void gameLoop(GameVar* gameVar) {
@@ -27,8 +30,15 @@ void gameLoop(GameVar* gameVar) {
 
     gameInputHandle(gameVar);
 
+    if (gameVar->scene == TITLE) {
+        sceneTitleLoop(gameVar);
+    } else if (gameVar->scene == FIELD) {
+    
+    }
+    
     BeginDrawing();
     ClearBackground(RAYWHITE);
+    
     EndDrawing();
 
     // Terminate part
