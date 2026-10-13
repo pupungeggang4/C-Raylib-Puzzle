@@ -28,6 +28,7 @@ file(GLOB_RECURSE ALL_SOURCES CONFIGURE_DEPENDS
 )
 
 file(COPY "${CMAKE_SOURCE_DIR}/asset" DESTINATION "${CMAKE_BINARY_DIR}/bin")
+file(COPY "${CMAKE_SOURCE_DIR}/save" DESTINATION "${CMAKE_BINARY_DIR}/bin")
 
 add_executable(main src/main.c ${ALL_SOURCES})
 

@@ -19,4 +19,8 @@ void sceneFieldRender(GameVar*);
 void sceneFieldKeyHandle(GameVar*);
 void sceneFieldMouseUp(GameVar*, Vector2);
 
+void menuRender(GameVar*);
+void menuKeyHandle(GameVar*);
+void menuMouseUp(GameVar*, Vector2);
+
 #endif

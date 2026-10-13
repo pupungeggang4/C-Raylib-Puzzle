@@ -1,5 +1,6 @@
 #include "game.h"
 #include "scene.h"
+#include "util.h"
 
 void gameInit(GameVar* gameVar) {
     #ifdef __EMSCRIPTEN__
@@ -16,9 +17,11 @@ void gameInit(GameVar* gameVar) {
     SetTargetFPS(60);
     #endif
     SetExitKey(KEY_NULL);
-    
     Camera2D tempCamera = {0};
     gameVar->camera = tempCamera;
+
+    loadFile(gameVar);
+
     gameVar->camera.zoom = GetRenderWidth() / 800.0f;
     gameVar->running = 1;
     gameVar->scene = TITLE;

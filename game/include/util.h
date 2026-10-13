@@ -10,6 +10,7 @@ void syncDB();
 #endif
 void loadFile(GameVar*);
 void saveFile(GameVar*);
+void readFile(const char*);
 
 int pointInsideRectUI(Vector2, float[]);
 
