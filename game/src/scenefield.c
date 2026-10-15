@@ -4,6 +4,7 @@
 #include "ui.h"
 #include "util.h"
 #include "render.h"
+#include "asset.h"
 
 void sceneFieldReady(GameVar* gameVar) {
     gameVar->menu = 0;
@@ -15,7 +16,7 @@ void sceneFieldUpdate(GameVar* gameVar) {
 
 void sceneFieldRender(GameVar* gameVar) {
     renderDrawText("Test", uiTitle.textTitle, 20, BLACK);
-    renderDrawRect(uiField.buttonMenu, YELLOW);
+    renderDrawTexture(asset.buttonMenu, uiField.buttonMenu);
 
     if (gameVar->menu == 1) {
         menuRender(gameVar);
@@ -63,7 +64,7 @@ void menuRender(GameVar* gameVar) {
         uiMenu.arrow[4], uiMenu.arrow[5]
     };
 
-    renderDrawRect(arrow, BLUE);
+    renderDrawTexture(asset.arrow, arrow);
 }
 
 void menuKeyHandle(GameVar* gameVar) {

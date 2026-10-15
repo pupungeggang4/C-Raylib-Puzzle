@@ -1,6 +1,7 @@
 #include "game.h"
 #include "scene.h"
 #include "util.h"
+#include "asset.h"
 
 void gameInit(GameVar* gameVar) {
     #ifdef __EMSCRIPTEN__
@@ -21,6 +22,7 @@ void gameInit(GameVar* gameVar) {
     gameVar->camera = tempCamera;
 
     loadFile(gameVar);
+    assetLoad(&asset);
 
     gameVar->camera.zoom = GetRenderWidth() / 800.0f;
     gameVar->running = 1;

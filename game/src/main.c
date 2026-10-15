@@ -1,6 +1,7 @@
 #include "includes.h"
 #include "gamevar.h"
 #include "game.h"
+#include "asset.h"
 
 #ifdef __EMSCRIPTEN__
 EM_BOOL key_callback(int eventType, const EmscriptenKeyboardEvent *e, void *userData) {
@@ -39,6 +40,7 @@ int main(int argc, char** argv) {
     while (gameVar.running) {
         gameLoop(&gameVar);
     }
+    assetDispose(&asset);
     CloseWindow();
     return 0;
     #endif

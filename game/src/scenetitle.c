@@ -4,6 +4,7 @@
 #include "ui.h"
 #include "util.h"
 #include "render.h"
+#include "asset.h"
 
 void sceneTitleReady(GameVar* gameVar) {
     gameVar->selectedTitle = 0;
@@ -21,8 +22,11 @@ void sceneTitleRender(GameVar* gameVar) {
     renderDrawRect(uiTitle.buttonQuit, YELLOW);
     renderDrawText("Quit Game", uiTitle.textQuit, 20, BLACK);
 
-    float arrow[4] = {uiTitle.arrow[0], uiTitle.arrow[1] + uiTitle.arrow[3] * gameVar->selectedTitle, uiTitle.arrow[4], uiTitle.arrow[5]};
-    renderDrawRect(arrow, BLUE);
+    float arrow[4] = {
+        uiTitle.arrow[0], uiTitle.arrow[1] + uiTitle.arrow[3] * gameVar->selectedTitle,
+        uiTitle.arrow[4], uiTitle.arrow[5]
+    };
+    renderDrawTexture(asset.arrow, arrow);
 }
 
 void sceneTitleKeyHandle(GameVar* gameVar) {
