@@ -17,5 +17,6 @@
 
 enum Scene {TITLE, FIELD};
 enum State {NORMAL, MENU};
+enum Diection {LEFT, RIGHT, UP, DOWN};
 
 #endif

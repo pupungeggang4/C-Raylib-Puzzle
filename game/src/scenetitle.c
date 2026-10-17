@@ -14,6 +14,7 @@ void sceneTitleUpdate(GameVar* gameVar) {
 }
 
 void sceneTitleRender(GameVar* gameVar) {
+    BeginMode2D(gameVar->cameraUI);
     renderDrawText("Puzzle", uiTitle.textTitle, 20, BLACK);
     renderDrawRect(uiTitle.buttonStart, YELLOW);
     renderDrawText("Start Game", uiTitle.textStart, 20, BLACK);
@@ -27,6 +28,7 @@ void sceneTitleRender(GameVar* gameVar) {
         uiTitle.arrow[4], uiTitle.arrow[5]
     };
     renderDrawTexture(asset.arrow, arrow);
+    EndMode2D();
 }
 
 void sceneTitleKeyHandle(GameVar* gameVar) {

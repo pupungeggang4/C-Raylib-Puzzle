@@ -8,7 +8,14 @@ typedef struct Entity {
     int type;
     int movable;
     int solid;
+
+    Vector2 position;
     Vector2i cellPos;
+    Vector2i destination;
+
+    int moving;
+    int movingDirection;
+    float movedDistance;
 } Entity;
 
 #endif

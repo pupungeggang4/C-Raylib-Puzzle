@@ -5,6 +5,7 @@
 #include "util.h"
 #include "render.h"
 #include "asset.h"
+#include "entityhandler.h"
 
 void sceneFieldReady(GameVar* gameVar) {
     gameVar->menu = 0;
@@ -12,21 +13,35 @@ void sceneFieldReady(GameVar* gameVar) {
 }
 
 void sceneFieldUpdate(GameVar* gameVar) {
+    if (gameVar->menu == 0) {
+        if (gameVar->state == NORMAL) {
+            entityHandleTick(&gameVar->player, gameVar->delta);
+        }
+    }
 }
 
 void sceneFieldRender(GameVar* gameVar) {
+    BeginMode2D(gameVar->camera);
+    entityRender(&gameVar->player);
+    EndMode2D();
+
+    BeginMode2D(gameVar->cameraUI);
     renderDrawText("Test", uiTitle.textTitle, 20, BLACK);
     renderDrawTexture(asset.buttonMenu, uiField.buttonMenu);
 
     if (gameVar->menu == 1) {
         menuRender(gameVar);
     }
+    EndMode2D();
 }
 
 void sceneFieldKeyHandle(GameVar* gameVar) {
     if (gameVar->menu == 1) {
         menuKeyHandle(gameVar);
     } else {
+        if (gameVar->state == NORMAL) {
+            entityHandleInput(&gameVar->player);
+        }
         if (IsKeyPressed(KEY_ESCAPE)) {
             gameVar->menu = 1;
             gameVar->selectedMenu = 0;
