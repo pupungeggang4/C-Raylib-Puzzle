@@ -49,6 +49,10 @@ void entityHandleTick(Entity* entity, float delta) {
             entity->position.x -= 200.0f * delta;
         } else if (entity->movingDirection == RIGHT) {
             entity->position.x += 200.0f * delta;
+        } else if (entity->movingDirection == UP) {
+            entity->position.y -= 200.0f * delta;
+        } else if (entity->movingDirection == DOWN) {
+            entity->position.y += 200.0f * delta;
         }
 
         entity->movedDistance += 200.0f * delta;
