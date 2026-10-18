@@ -32,7 +32,6 @@ void gameInit(GameVar* gameVar) {
 
 void gameLoop(GameVar* gameVar) {
     gameVar->delta = GetFrameTime();
-
     gameInputHandle(gameVar);
 
     if (gameVar->scene == TITLE) {
