@@ -8,6 +8,7 @@ void gameInit(GameVar* gameVar) {
     InitWindow(800, 600, "Puzzle Game");
     #else
     SetConfigFlags(FLAG_WINDOW_HIGHDPI);
+    SetConfigFlags(FLAG_VSYNC_HINT);
     InitWindow(800, 600, "Puzzle Game");
     #if !defined(__APPLE__) && !defined(__ANDROID__)
     printf("1234\n");
@@ -16,7 +17,6 @@ void gameInit(GameVar* gameVar) {
     gameVar->height = (int)(600 * dpiScale.y);
     SetWindowSize(gameVar->width, gameVar->height);
     #endif
-    SetTargetFPS(60);
     #endif
     SetExitKey(KEY_NULL);
     Camera2D tempCamera1 = {0}, tempCamera2 = {0};
