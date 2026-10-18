@@ -36,7 +36,7 @@ void sceneTitleKeyHandle(GameVar* gameVar) {
         gameVar->selectedTitle = (gameVar->selectedTitle + 1) % 3;
     } else if (IsKeyPressed(KEY_UP)) {
         gameVar->selectedTitle = (gameVar->selectedTitle + 2) % 3;
-    } else if (IsKeyPressed(KEY_ENTER)) {
+    } else if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_KP_ENTER)) {
         if (gameVar->selectedTitle == 0) {
             sceneChangeTo(gameVar, FIELD);
         } else if (gameVar->selectedTitle == 1) {

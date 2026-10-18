@@ -89,7 +89,7 @@ void menuKeyHandle(GameVar* gameVar) {
 
     if (IsKeyPressed(KEY_DOWN)) gameVar->selectedMenu = (gameVar->selectedMenu + 1) % 4;
     else if (IsKeyPressed(KEY_UP)) gameVar->selectedMenu = (gameVar->selectedMenu + 3) % 4;
-    else if (IsKeyPressed(KEY_ENTER)) {
+    else if (IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_KP_ENTER)) {
         if (gameVar->selectedMenu == 0) {
             gameVar->menu = 0;
         } else if (gameVar->selectedMenu == 1) {

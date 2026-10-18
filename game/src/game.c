@@ -9,7 +9,8 @@ void gameInit(GameVar* gameVar) {
     #else
     SetConfigFlags(FLAG_WINDOW_HIGHDPI);
     InitWindow(800, 600, "Puzzle Game");
-    #ifndef __APPLE__
+    #if !defined(__APPLE__) && !defined(__ANDROID__)
+    printf("1234\n");
     Vector2 dpiScale = GetWindowScaleDPI();
     gameVar->width = (int)(800 * dpiScale.x);
     gameVar->height = (int)(600 * dpiScale.y);
