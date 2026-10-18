@@ -1,6 +1,7 @@
 #include "game.h"
 #include "scene.h"
 #include "util.h"
+#include "asset.h"
 
 void gameInit(GameVar* gameVar) {
     #ifdef __EMSCRIPTEN__
@@ -17,20 +18,25 @@ void gameInit(GameVar* gameVar) {
     SetTargetFPS(60);
     #endif
     SetExitKey(KEY_NULL);
-    Camera2D tempCamera = {0};
-    gameVar->camera = tempCamera;
+    Camera2D tempCamera1 = {0}, tempCamera2 = {0};
+    gameVar->camera = tempCamera1;
+    gameVar->cameraUI = tempCamera2;
 
     loadFile(gameVar);
+    assetLoad(&asset);
 
     gameVar->camera.zoom = GetRenderWidth() / 800.0f;
+    gameVar->cameraUI.zoom = GetRenderWidth() / 800.0f;
     gameVar->running = 1;
     gameVar->scene = TITLE;
     gameVar->state = NORMAL;
+
+    Entity tempPlayer = {0};
+    gameVar->player = tempPlayer;
 }
 
 void gameLoop(GameVar* gameVar) {
-    gameVar->camera.zoom = GetRenderWidth() / 800.0f;
-
+    gameVar->delta = GetFrameTime();
     gameInputHandle(gameVar);
 
     if (gameVar->scene == TITLE) {
@@ -63,9 +69,9 @@ void gameLoop(GameVar* gameVar) {
 void gameInputHandle(GameVar* gameVar) {    
     if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
         #ifdef __EMSCRIPTEN__
-        Vector2 pos = GetScreenToWorld2D(GetMousePosition(), gameVar->camera);
+        Vector2 pos = GetScreenToWorld2D(GetMousePosition(), gameVar->cameraUI);
         #else
-        Vector2 pos = GetScreenToWorld2D(Vector2Scale(GetMousePosition(), GetWindowScaleDPI().x), gameVar->camera);
+        Vector2 pos = GetScreenToWorld2D(Vector2Scale(GetMousePosition(), GetWindowScaleDPI().x), gameVar->cameraUI);
         #endif
         printf("(%.0f, %.0f)\n", pos.x, pos.y);
 

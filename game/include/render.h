@@ -5,5 +5,6 @@
 
 void renderDrawRect(float[], Color);
 void renderDrawText(const char*, float[], int, Color);
+void renderDrawTexture(Texture2D, float[]);
 
 #endif

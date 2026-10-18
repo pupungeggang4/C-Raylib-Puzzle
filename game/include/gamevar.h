@@ -2,12 +2,15 @@
 #define GAMEVAR_H
 
 #include "includes.h"
+#include "entity.h"
 #include "board.h"
 
 typedef struct GameVar {
     int running;
     int width, height;
     Camera2D camera;
+    Camera2D cameraUI;
+    float delta;
 
     int scene;
     int state;
@@ -17,6 +20,7 @@ typedef struct GameVar {
     int selectedMenu;
 
     Board board;
+    Entity player;
 } GameVar;
 
 extern GameVar gameVar;
