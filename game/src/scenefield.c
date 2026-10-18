@@ -21,18 +21,13 @@ void sceneFieldUpdate(GameVar* gameVar) {
 }
 
 void sceneFieldRender(GameVar* gameVar) {
-    BeginMode2D(gameVar->camera);
     entityRender(&gameVar->player);
-    //EndMode2D();
-
-    //BeginMode2D(gameVar->cameraUI);
-    //renderDrawText("Test", uiTitle.textTitle, 20, BLACK);
+    renderDrawText("Test", uiTitle.textTitle, 20, BLACK);
     renderDrawTexture(asset.buttonMenu, uiField.buttonMenu);
 
     if (gameVar->menu == 1) {
         menuRender(gameVar);
     }
-    EndMode2D();
 }
 
 void sceneFieldKeyHandle(GameVar* gameVar) {

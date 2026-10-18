@@ -10,8 +10,7 @@ void gameInit(GameVar* gameVar) {
     SetConfigFlags(FLAG_WINDOW_HIGHDPI);
     SetConfigFlags(FLAG_VSYNC_HINT);
     InitWindow(800, 600, "Puzzle Game");
-    #if !defined(__APPLE__) && !defined(__ANDROID__)
-    printf("1234\n");
+    #if !defined(__APPLE__)
     Vector2 dpiScale = GetWindowScaleDPI();
     gameVar->width = (int)(800 * dpiScale.x);
     gameVar->height = (int)(600 * dpiScale.y);
@@ -19,15 +18,10 @@ void gameInit(GameVar* gameVar) {
     #endif
     #endif
     SetExitKey(KEY_NULL);
-    Camera2D tempCamera1 = {0}, tempCamera2 = {0};
-    gameVar->camera = tempCamera1;
-    gameVar->cameraUI = tempCamera2;
 
     loadFile(gameVar);
     assetLoad(&asset);
 
-    gameVar->camera.zoom = GetRenderWidth() / 800.0f;
-    gameVar->cameraUI.zoom = GetRenderWidth() / 800.0f;
     gameVar->running = 1;
     gameVar->scene = TITLE;
     gameVar->state = NORMAL;
@@ -38,8 +32,6 @@ void gameInit(GameVar* gameVar) {
 
 void gameLoop(GameVar* gameVar) {
     gameVar->delta = GetFrameTime();
-    gameVar->camera.zoom = GetRenderWidth() / 800.0f;
-    gameVar->cameraUI.zoom = GetRenderWidth() / 800.0f;
 
     gameInputHandle(gameVar);
 
@@ -72,11 +64,7 @@ void gameLoop(GameVar* gameVar) {
 
 void gameInputHandle(GameVar* gameVar) {    
     if (IsMouseButtonReleased(MOUSE_BUTTON_LEFT)) {
-        #ifdef __EMSCRIPTEN__
-        Vector2 pos = GetScreenToWorld2D(GetMousePosition(), gameVar->cameraUI);
-        #else
-        Vector2 pos = GetScreenToWorld2D(Vector2Scale(GetMousePosition(), GetWindowScaleDPI().x), gameVar->cameraUI);
-        #endif
+        Vector2 pos = GetMousePosition();
         printf("(%.0f, %.0f)\n", pos.x, pos.y);
 
         if (gameVar->scene == TITLE) {

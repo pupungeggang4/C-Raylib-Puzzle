@@ -8,8 +8,7 @@
 typedef struct GameVar {
     int running;
     int width, height;
-    Camera2D camera;
-    Camera2D cameraUI;
+    float scale;
     float delta;
 
     int scene;
