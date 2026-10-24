@@ -6,6 +6,8 @@
 typedef struct Asset {
     Texture2D buttonMenu;
     Texture2D arrow;
+    Texture2D entity;
+    Texture2D player;
 } Asset;
 
 extern Asset asset;

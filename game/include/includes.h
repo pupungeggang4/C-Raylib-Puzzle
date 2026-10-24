@@ -18,5 +18,6 @@
 enum Scene {TITLE, FIELD};
 enum State {NORMAL, MENU};
 enum Diection {LEFT, RIGHT, UP, DOWN};
+enum EntityType {EMPTY, WALL, WATER, FLOWER};
 
 #endif

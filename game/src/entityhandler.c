@@ -1,5 +1,22 @@
 #include "entityhandler.h"
 #include "render.h"
+#include "asset.h"
+
+void entityInit(Entity* entity, int type, int x, int y) {
+    entity->valid = 1;
+    entity->type = type;
+    // Add solid movable
+    entity->state = 0;
+    entity->facing = DOWN;
+
+    entity->cellPos.x = x; entity->cellPos.y = y;
+    entity->destination.x = x; entity->destination.y = y;
+    entity->position.x = x * 40; entity->position.y = y * 40;
+
+    entity->moving = 0;
+    entity->movedDistance = 0;
+    entity->movingDirection = DOWN;
+}
 
 void entityHandleInput(Entity* entity) {
     if (IsKeyPressed(KEY_LEFT)) {
@@ -66,5 +83,12 @@ void entityHandleTick(Entity* entity, float delta) {
 }
 
 void entityRender(Entity* entity) {
-    DrawRectangle(entity->position.x, entity->position.y, 40.0f, 40.0f, BLUE);
+    if (entity->type > 0) {
+        Rectangle rect = {entityDrawCoord[entity->type][0], entityDrawCoord[entity->type][1], entityDrawCoord[entity->type][2], entityDrawCoord[entity->type][3]};
+        Rectangle dest = {entity->position.x, entity->position.y, 40, 40};
+        Vector2 origin = {0, 0};
+        DrawTexturePro(asset.entity, rect, dest, origin, 0, WHITE);
+    } else {
+        DrawRectangle(entity->position.x, entity->position.y, 40.0f, 40.0f, BLUE);
+    }
 }

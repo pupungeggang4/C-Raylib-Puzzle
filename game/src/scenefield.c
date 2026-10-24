@@ -1,6 +1,7 @@
 #include "scene.h"
 #include "game.h"
 #include "gamevar.h"
+
 #include "ui.h"
 #include "util.h"
 #include "render.h"
@@ -22,8 +23,13 @@ void sceneFieldUpdate(GameVar* gameVar) {
 
 void sceneFieldRender(GameVar* gameVar) {
     entityRender(&gameVar->player);
-    renderDrawText("Test", uiTitle.textTitle, 20, BLACK);
     renderDrawTexture(asset.buttonMenu, uiField.buttonMenu);
+    for (int i = 0; i < 256; i++) {
+        Entity* entity = &gameVar->board.entityList[i];
+        if (entity->valid) {
+            entityRender(entity);
+        }
+    }
 
     if (gameVar->menu == 1) {
         menuRender(gameVar);

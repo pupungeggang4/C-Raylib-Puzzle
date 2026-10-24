@@ -4,6 +4,7 @@
 #include "includes.h"
 #include "entity.h"
 
+void entityInit(Entity*, int, int, int);
 void entityHandleInput(Entity*);
 void entityMove(Entity*, int);
 void entityFollow(Entity*, Camera2D*);
