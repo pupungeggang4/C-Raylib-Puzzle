@@ -3,6 +3,7 @@
 #include "util.h"
 #include "asset.h"
 #include "entityhandler.h"
+#include "board.h"
 
 void gameInit(GameVar* gameVar) {
     #ifdef __EMSCRIPTEN__
@@ -27,14 +28,14 @@ void gameInit(GameVar* gameVar) {
     gameVar->scene = TITLE;
     gameVar->state = NORMAL;
 
-    Entity tempPlayer = {0};
-    gameVar->player = tempPlayer;
-
     Board tempBoard = {0};    
     gameVar->board = tempBoard;
     gameVar->board.row = 16;
     gameVar->board.col = 16;
-    entityInit(&gameVar->board.entityList[0], WALL, 1, 1);
+    entityInit(&gameVar->board.entityList[0], GATE, 1, 1);
+    Entity tempPlayer = {0};
+    gameVar->board.player = tempPlayer;
+    gameVar->board.player.type = PLAYER;
 }
 
 void gameLoop(GameVar* gameVar) {

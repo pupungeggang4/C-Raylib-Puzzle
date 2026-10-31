@@ -9,6 +9,6 @@ void entityHandleInput(Entity*);
 void entityMove(Entity*, int);
 void entityFollow(Entity*, Camera2D*);
 void entityHandleTick(Entity*, float);
-void entityRender(Entity*);
+void entityRender(Entity*, float);
 
 #endif

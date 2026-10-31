@@ -6,10 +6,12 @@ void assetLoad(Asset* asset) {
     asset->buttonMenu = LoadTexture("asset/button_menu.png");
     asset->arrow = LoadTexture("asset/arrow.png");
     asset->entity = LoadTexture("asset/entity.png");
+    asset->player = LoadTexture("asset/player.png");
 }
 
 void assetDispose(Asset* asset) {
     UnloadTexture(asset->buttonMenu);
     UnloadTexture(asset->arrow);
     UnloadTexture(asset->entity);
+    UnloadTexture(asset->player);
 }

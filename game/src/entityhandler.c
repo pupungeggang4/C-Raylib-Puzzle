@@ -5,6 +5,9 @@
 void entityInit(Entity* entity, int type, int x, int y) {
     entity->valid = 1;
     entity->type = type;
+    entity->texture = textureMap[type];
+    entity->frameTime = 0;
+
     // Add solid movable
     entity->state = 0;
     entity->facing = DOWN;
@@ -36,6 +39,7 @@ void entityHandleInput(Entity* entity) {
 void entityMove(Entity* entity, int direction) {
     if (entity->moving == 0) {
         entity->moving = 1;
+        entity->facing = direction;
         entity->movedDistance = 0;
         entity->movingDirection = direction;
 
@@ -82,13 +86,22 @@ void entityHandleTick(Entity* entity, float delta) {
     }
 }
 
-void entityRender(Entity* entity) {
-    if (entity->type > 0) {
-        Rectangle rect = {entityDrawCoord[entity->type][0], entityDrawCoord[entity->type][1], entityDrawCoord[entity->type][2], entityDrawCoord[entity->type][3]};
+void entityRender(Entity* entity, float delta) {
+    entity->frameTime += delta;
+
+    if (entity->type != PLAYER) {
+        Rectangle rect = {entityDrawCoord[entity->texture][0], entityDrawCoord[entity->texture][1], entityDrawCoord[entity->texture][2], entityDrawCoord[entity->texture][3]};
         Rectangle dest = {entity->position.x, entity->position.y, 40, 40};
         Vector2 origin = {0, 0};
         DrawTexturePro(asset.entity, rect, dest, origin, 0, WHITE);
     } else {
-        DrawRectangle(entity->position.x, entity->position.y, 40.0f, 40.0f, BLUE);
+        int frame = 0;
+        if (entity->moving) frame += 8;
+        frame += entity->facing * 2;
+        frame += (int)(entity->frameTime / 0.4) % 2;
+        Rectangle rect = {playerDrawCoord[frame][0], playerDrawCoord[frame][1], playerDrawCoord[frame][2], playerDrawCoord[frame][3]};
+        Rectangle dest = {entity->position.x, entity->position.y, 40, 40};
+        Vector2 origin = {0, 0};
+        DrawTexturePro(asset.player, rect, dest, origin, 0, WHITE);
     }
 }

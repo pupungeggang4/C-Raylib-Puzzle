@@ -6,6 +6,7 @@
 typedef struct Board {
     int row;
     int col;
+    Entity player;
     Entity entityList[256]; 
 } Board;
 

@@ -19,7 +19,6 @@ typedef struct GameVar {
     int selectedMenu;
 
     Board board;
-    Entity player;
 } GameVar;
 
 extern GameVar gameVar;

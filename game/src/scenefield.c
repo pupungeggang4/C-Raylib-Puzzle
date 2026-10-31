@@ -1,12 +1,14 @@
 #include "scene.h"
-#include "game.h"
-#include "gamevar.h"
 
 #include "ui.h"
+#include "asset.h"
+#include "gamevar.h"
+#include "board.h"
+
 #include "util.h"
 #include "render.h"
-#include "asset.h"
 #include "entityhandler.h"
+#include "game.h"
 
 void sceneFieldReady(GameVar* gameVar) {
     gameVar->menu = 0;
@@ -16,18 +18,18 @@ void sceneFieldReady(GameVar* gameVar) {
 void sceneFieldUpdate(GameVar* gameVar) {
     if (gameVar->menu == 0) {
         if (gameVar->state == NORMAL) {
-            entityHandleTick(&gameVar->player, gameVar->delta);
+            entityHandleTick(&gameVar->board.player, gameVar->delta);
         }
     }
 }
 
 void sceneFieldRender(GameVar* gameVar) {
-    entityRender(&gameVar->player);
+    entityRender(&gameVar->board.player, gameVar->delta);
     renderDrawTexture(asset.buttonMenu, uiField.buttonMenu);
     for (int i = 0; i < 256; i++) {
         Entity* entity = &gameVar->board.entityList[i];
         if (entity->valid) {
-            entityRender(entity);
+            entityRender(entity, gameVar->delta);
         }
     }
 
@@ -41,7 +43,7 @@ void sceneFieldKeyHandle(GameVar* gameVar) {
         menuKeyHandle(gameVar);
     } else {
         if (gameVar->state == NORMAL) {
-            entityHandleInput(&gameVar->player);
+            entityHandleInput(&gameVar->board.player);
         }
         if (IsKeyPressed(KEY_ESCAPE)) {
             gameVar->menu = 1;
