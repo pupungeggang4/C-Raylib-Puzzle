@@ -4,8 +4,8 @@
 #include "entity.h"
 
 typedef struct Board {
-    int row;
-    int col;
+    int x;
+    int y;
     Entity player;
     Entity entityList[256]; 
 } Board;
