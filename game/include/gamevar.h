@@ -7,8 +7,6 @@
 
 typedef struct GameVar {
     int running;
-    int width, height;
-    float scale;
     float delta;
 
     int scene;
