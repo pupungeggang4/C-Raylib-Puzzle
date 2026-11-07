@@ -38,7 +38,7 @@ void gameInit(GameVar* gameVar) {
 }
 
 void gameLoop(GameVar* gameVar) {
-    gameVar->camera.zoom = GetRenderWidth() / 800;
+    gameVar->camera.zoom = GetRenderWidth() / 800.0f;
     gameVar->delta = GetFrameTime();
     gameInputHandle(gameVar);
 
