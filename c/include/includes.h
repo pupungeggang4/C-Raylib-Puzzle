@@ -18,7 +18,7 @@
 enum Scene {TITLE, FIELD};
 enum State {NORMAL, MENU};
 enum Diection {LEFT, RIGHT, UP, DOWN};
-enum EntityType {EMPTY, WALL, WATER, FLOWER, ROCK, LOCK, GATE, PLAYER};
+enum EntityType {EMPTY, PLAYER, WALL, WATER, FLOWER, ROCK, LOCK, GATE};
 enum EntityTexture {
     T_EMPTY, T_WALL, T_WATER, T_FLOWER_OFF, T_FLOWER_ON, T_ROCK, T_LOCK_OFF, T_LOCK_ON, T_GATE_OFF, T_GATE_ON
 };

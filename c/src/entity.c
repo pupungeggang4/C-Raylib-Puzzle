@@ -4,10 +4,13 @@ int textureMap[100] = {
     T_EMPTY, // EMPTY
     T_WALL, // WALL
     T_WATER, //WATER
-    T_FLOWER_OFF, // FLOWER
+    T_FLOWER_OFF, // FLOWER OFF
+    T_FLOWER_ON, // FLOWER ON
     T_ROCK, // ROCK
-    T_LOCK_OFF, // LOCK
-    T_GATE_OFF // GATE
+    T_LOCK_OFF, // LOCK OFF
+    T_LOCK_ON, // LOCK ON
+    T_GATE_OFF, // GATE OFF
+    T_GATE_ON, // GATE ON
 };
 
 float entityDrawCoord[100][4] = {
