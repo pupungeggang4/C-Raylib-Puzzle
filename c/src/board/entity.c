@@ -1,4 +1,8 @@
-#include "entity.h"
+#include "board/entity.h"
+
+char entityMap[100][32] = {
+
+};
 
 int textureMap[100] = {
     T_EMPTY, // EMPTY

@@ -1,7 +1,7 @@
-#include "entity.h"
-#include "board.h"
-#include "entityhandler.h"
-#include "boardhandler.h"
+#include "board/entity.h"
+#include "board/board.h"
+#include "board/entityhandler.h"
+#include "board/boardhandler.h"
 
 void boardLoad(Board* board, const char* path) {
     FILE *fp = fopen(path, "r");

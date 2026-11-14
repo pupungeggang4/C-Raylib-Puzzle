@@ -28,6 +28,7 @@ typedef struct Entity {
     float movedDistance;
 } Entity;
 
+extern char entityMap[100][32];
 extern float entityDrawCoord[100][4];
 extern float playerDrawCoord[16][4];
 extern int textureMap[100];

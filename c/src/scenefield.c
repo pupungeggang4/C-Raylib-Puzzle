@@ -3,11 +3,11 @@
 #include "ui.h"
 #include "asset.h"
 #include "gamevar.h"
-#include "board.h"
+#include "board/board.h"
 
 #include "util.h"
 #include "render.h"
-#include "entityhandler.h"
+#include "board/entityhandler.h"
 #include "game.h"
 
 void sceneFieldReady(GameVar* gameVar) {

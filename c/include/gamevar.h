@@ -2,8 +2,8 @@
 #define GAMEVAR_H
 
 #include "includes.h"
-#include "entity.h"
-#include "board.h"
+#include "board/entity.h"
+#include "board/board.h"
 
 typedef struct GameVar {
     int running;

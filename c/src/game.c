@@ -2,9 +2,9 @@
 #include "scene.h"
 #include "util.h"
 #include "asset.h"
-#include "entityhandler.h"
-#include "board.h"
-#include "boardhandler.h"
+#include "board/entityhandler.h"
+#include "board/board.h"
+#include "board/boardhandler.h"
 
 void gameInit(GameVar* gameVar) {
     #ifdef __EMSCRIPTEN__
