@@ -43,7 +43,7 @@ void sceneFieldKeyHandle(GameVar* gameVar) {
         menuKeyHandle(gameVar);
     } else {
         if (gameVar->state == NORMAL) {
-            entityHandleInput(&gameVar->board.player);
+            entityHandleInput(&gameVar->board.player, &gameVar->board);
         }
         if (IsKeyPressed(KEY_ESCAPE)) {
             gameVar->menu = 1;

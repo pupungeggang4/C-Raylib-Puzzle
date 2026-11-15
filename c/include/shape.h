@@ -6,4 +6,6 @@ typedef struct Vector2i {
     int y;
 } Vector2i;
 
+int vector2iEqual(Vector2i, Vector2i);
+
 #endif

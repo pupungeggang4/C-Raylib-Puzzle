@@ -1,4 +1,5 @@
 #include "board/entityhandler.h"
+#include "board/board.h"
 #include "render.h"
 #include "asset.h"
 
@@ -18,36 +19,35 @@ void entityInit(Entity* entity, int type, int x, int y, int state) {
     entity->movedDistance = 0;
     entity->movingDirection = DOWN;
 
-    // Add solid movable
-    // Add Texutre Coord
+    // Add solid movable, texcoord
     switch (type) {
         case WALL: wallInit(entity, state); break;
         case ROCK: rockInit(entity, state); break;
+        case WATER: waterInit(entity, state); break;
+        case GATE: gateInit(entity, state); break;
+        case GOAL: goalInit(entity, state); break;
         default: break;
     }
 }
 
-void entityHandleInput(Entity* entity) {
+void entityHandleInput(Entity* entity, Board* board) {
     if (IsKeyPressed(KEY_LEFT)) {
-        entityMove(entity, LEFT);
+        entityMove(entity, board, LEFT);
     }
     if (IsKeyPressed(KEY_RIGHT)) {
-        entityMove(entity, RIGHT);
+        entityMove(entity, board, RIGHT);
     }
     if (IsKeyPressed(KEY_UP)) {
-        entityMove(entity, UP);
+        entityMove(entity, board, UP);
     }
     if (IsKeyPressed(KEY_DOWN)) {
-        entityMove(entity, DOWN);
+        entityMove(entity, board, DOWN);
     }
 }
 
-void entityMove(Entity* entity, int direction) {
+void entityMove(Entity* entity, Board* board, int direction) {
     if (entity->moving == 0) {
-        entity->moving = 1;
         entity->facing = direction;
-        entity->movedDistance = 0;
-        entity->movingDirection = direction;
 
         if (direction == LEFT) {
             entity->destination.x = entity->cellPos.x - 1;
@@ -62,9 +62,29 @@ void entityMove(Entity* entity, int direction) {
             entity->destination.x = entity->cellPos.x;
             entity->destination.y = entity->cellPos.y + 1;
         }
-        entity->cellPos.x = entity->destination.x;
-        entity->cellPos.y = entity->destination.y;
+
+        if (entityMoveCheck(entity, board)) {
+            entity->moving = 1;
+            entity->movedDistance = 0;
+            entity->movingDirection = direction;
+            entity->cellPos.x = entity->destination.x;
+            entity->cellPos.y = entity->destination.y;
+        }
     }
+}
+
+int entityMoveCheck(Entity* entity, Board* board) {
+    for (int i = 0; i < 256; i++) {
+        Entity* target = &board->entityList[i];
+        if (target->valid) {
+            if (vector2iEqual(target->cellPos, entity->destination)) {
+                if (target->solid && !target->movable) {
+                    return FALSE;
+                }
+            }
+        }
+    }
+    return TRUE;
 }
 
 void entityFollow(Entity* entity, Camera2D* camera) {
