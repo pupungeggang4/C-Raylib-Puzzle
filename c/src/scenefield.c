@@ -18,7 +18,7 @@ void sceneFieldReady(GameVar* gameVar) {
 void sceneFieldUpdate(GameVar* gameVar) {
     if (gameVar->menu == 0) {
         if (gameVar->state == NORMAL) {
-            entityHandleTick(&gameVar->board.player, gameVar->delta);
+            entityUpdate(&gameVar->board.player, gameVar->delta);
         }
     }
 }

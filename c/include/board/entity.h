@@ -8,19 +8,20 @@ typedef struct Entity {
     // Identity, state
     int valid;
     int type;
-    int texture;
-    int frame;
-    float frameTime;
-
     int movable;
     int solid;
-    int state;
     int facing;
+    int state;
 
     // Position
     Vector2 position;
     Vector2i cellPos;
     Vector2i destination;
+
+    // Rendering
+    int texCoordIndex[2];
+    int frame;
+    float frameTime;
 
     // Animation, Physics
     int moving;
@@ -28,9 +29,7 @@ typedef struct Entity {
     float movedDistance;
 } Entity;
 
-extern char entityMap[100][32];
-extern float entityDrawCoord[100][4];
-extern float playerDrawCoord[16][4];
-extern int textureMap[100];
+extern float tableDrawEntity[100][4];
+extern float tableDrawPlayer[16][4];
 
 #endif

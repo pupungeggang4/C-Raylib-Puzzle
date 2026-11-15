@@ -1,23 +1,6 @@
 #include "board/entity.h"
 
-char entityMap[100][32] = {
-
-};
-
-int textureMap[100] = {
-    T_EMPTY, // EMPTY
-    T_WALL, // WALL
-    T_WATER, //WATER
-    T_FLOWER_OFF, // FLOWER OFF
-    T_FLOWER_ON, // FLOWER ON
-    T_ROCK, // ROCK
-    T_LOCK_OFF, // LOCK OFF
-    T_LOCK_ON, // LOCK ON
-    T_GATE_OFF, // GATE OFF
-    T_GATE_ON, // GATE ON
-};
-
-float entityDrawCoord[100][4] = {
+float tableDrawEntity[100][4] = {
     {0, 0, 0, 0},
     {0, 0, 20, 20},
     {20, 0, 20, 20},
@@ -33,7 +16,7 @@ float entityDrawCoord[100][4] = {
     {60, 20, 20, 20}
 };
 
-float playerDrawCoord[16][4] = {
+float tableDrawPlayer[16][4] = {
     {0, 0, 20, 20},
     {20, 0, 20, 20},
     {40, 0, 20, 20},

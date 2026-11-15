@@ -2,13 +2,11 @@
 #include "render.h"
 #include "asset.h"
 
-void entityInit(Entity* entity, int type, int x, int y) {
+void entityInit(Entity* entity, int type, int x, int y, int state) {
+    // General
     entity->valid = 1;
     entity->type = type;
-    entity->texture = textureMap[type];
     entity->frameTime = 0;
-
-    // Add solid movable
     entity->state = 0;
     entity->facing = DOWN;
 
@@ -19,6 +17,14 @@ void entityInit(Entity* entity, int type, int x, int y) {
     entity->moving = 0;
     entity->movedDistance = 0;
     entity->movingDirection = DOWN;
+
+    // Add solid movable
+    // Add Texutre Coord
+    switch (type) {
+        case WALL: wallInit(entity, state); break;
+        case ROCK: rockInit(entity, state); break;
+        default: break;
+    }
 }
 
 void entityHandleInput(Entity* entity) {
@@ -64,7 +70,7 @@ void entityMove(Entity* entity, int direction) {
 void entityFollow(Entity* entity, Camera2D* camera) {
 }
 
-void entityHandleTick(Entity* entity, float delta) {
+void entityUpdate(Entity* entity, float delta) {
     if (entity->moving == 1) {
         if (entity->movingDirection == LEFT) {
             entity->position.x -= 200.0f * delta;
@@ -90,7 +96,11 @@ void entityRender(Entity* entity, float delta) {
     entity->frameTime += delta;
 
     if (entity->type != PLAYER) {
-        Rectangle rect = {entityDrawCoord[entity->texture][0], entityDrawCoord[entity->texture][1], entityDrawCoord[entity->texture][2], entityDrawCoord[entity->texture][3]};
+        int texIndex = entity->texCoordIndex[entity->state];
+        Rectangle rect = {
+            tableDrawEntity[texIndex][0], tableDrawEntity[texIndex][1],
+            tableDrawEntity[texIndex][2], tableDrawEntity[texIndex][3]
+        };
         Rectangle dest = {entity->position.x, entity->position.y, 40, 40};
         Vector2 origin = {0, 0};
         DrawTexturePro(asset.entity, rect, dest, origin, 0, WHITE);
@@ -99,7 +109,10 @@ void entityRender(Entity* entity, float delta) {
         if (entity->moving) frame += 8;
         frame += entity->facing * 2;
         frame += (int)(entity->frameTime / 0.4) % 2;
-        Rectangle rect = {playerDrawCoord[frame][0], playerDrawCoord[frame][1], playerDrawCoord[frame][2], playerDrawCoord[frame][3]};
+        Rectangle rect = {
+            tableDrawPlayer[frame][0], tableDrawPlayer[frame][1],
+            tableDrawPlayer[frame][2], tableDrawPlayer[frame][3]
+        };
         Rectangle dest = {entity->position.x, entity->position.y, 40, 40};
         Vector2 origin = {0, 0};
         DrawTexturePro(asset.player, rect, dest, origin, 0, WHITE);
